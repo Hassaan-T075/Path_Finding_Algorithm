@@ -5,7 +5,7 @@ using namespace std;
 
 class Grid
 {
-private:
+public:
 	Node** ptr;
 
 public:
@@ -14,4 +14,6 @@ public:
 	//helper functions
 	void Display_Grid();
 	void Add_Obstacle(int x, int y);
+	void adjacent(int x, int y);
+	void BFS();
 };

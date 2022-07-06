@@ -16,5 +16,21 @@ int main() {
 
 	G.Display_Grid();
 
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		for (size_t j = 0; j < 10; j++)
+		{
+		G.adjacent(i, j);
+			cout << "\n(" << i << " , " << j << ")\n";
+
+
+			for (int k = 0; k < G.ptr[i][j].adj.size(); k++) {
+				cout << G.ptr[i][j].adj[k].x << " " << G.ptr[i][j].adj[k].y << "\n";
+			}
+		}
+		cout << "\n\n";
+	}
+
 	return 0;
 }
