@@ -14,6 +14,8 @@ Grid::Grid()
 	{
 		for (size_t j = 0; j < SIZE; j++)
 		{
+			this->ptr[i][j].x = i;
+			this->ptr[i][j].y = j;
 			this->ptr[i][j].value = 0;
 		}
 	}
@@ -98,7 +100,7 @@ void Grid::BFS(int x, int y)
 	q.push(this->ptr[x][y]);
 
 	int xc, yc;
-	Node u;
+	Node u, v;
 
 	while (!q.empty())
 	{
@@ -113,9 +115,23 @@ void Grid::BFS(int x, int y)
 			if (this->ptr[xc][yc].value == NULL && (xc != x || yc != y))
 			{
 				//update adjacent node and insert into queue
+				v = this->ptr[xc][yc];
+				this->ptr[xc][yc].pred = Cord(u.x, u.y);
 				this->ptr[xc][yc].value = u.value + 1;
 				q.push(this->ptr[xc][yc]);
 			}
 		}
+	}
+}
+
+void Grid::lineage(int x, int y)
+{
+	if (this->ptr[x][y].pred.x == -1 && this->ptr[x][y].pred.y == -1)
+		return;
+	else
+	{
+		Node u = this->ptr[x][y];
+		cout << "(" << u.pred.x << " , " << u.pred.y << ")\n";
+		lineage(u.pred.x, u.pred.y);
 	}
 }

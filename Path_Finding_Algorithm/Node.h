@@ -17,6 +17,7 @@ struct Cord
 class Node
 {
 public:
+	int x, y;
 	//predecessor of discovered node
 	Cord pred;
 	//adjacency list for current node

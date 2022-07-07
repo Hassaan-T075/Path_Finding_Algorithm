@@ -9,17 +9,23 @@ int main() {
 
 	//G.Display_Grid();
 
+	//Obstacles
+	G.Add_Obstacle(9, 7);
+	G.Add_Obstacle(8, 7);
+	G.Add_Obstacle(6, 7);
+	G.Add_Obstacle(6, 8);
+
 	G.Add_Obstacle(9, 7);
 	G.Add_Obstacle(8, 7);
 	G.Add_Obstacle(6, 7);
 	G.Add_Obstacle(7, 7);
 	G.Add_Obstacle(6, 8);
-	//G.Add_Obstacle(6, 9);
 
 
 	G.Add_Obstacle(6, 3);
 	G.Add_Obstacle(6, 4);
 	G.Add_Obstacle(6, 5);
+	//G.Add_Obstacle(6, 9);
 
 	G.Display_Grid();
 
@@ -32,9 +38,11 @@ int main() {
 		}
 	}
 
-	G.BFS(4, 4);
+	G.BFS(0, 0);
 
 	G.Display_Grid();
+
+	G.lineage(9, 9);
 
 	return 0;
 }
