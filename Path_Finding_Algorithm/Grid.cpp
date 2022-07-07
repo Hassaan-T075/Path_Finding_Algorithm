@@ -92,7 +92,30 @@ void Grid::adjacent(int x, int y)
 		this->ptr[x][y].adj.push_back(Cord(x + 1, y + 1));
 }
 
-void Grid::BFS()
+void Grid::BFS(int x, int y)
 {
+	queue<Node> q;
+	q.push(this->ptr[x][y]);
 
+	int xc, yc;
+	Node u;
+
+	while (!q.empty())
+	{
+		u = q.front();
+		q.pop();
+
+		for (int k = 0; k < u.adj.size(); k++) {
+			
+			xc = u.adj[k].x;
+			yc = u.adj[k].y;
+			
+			if (this->ptr[xc][yc].value == NULL && (xc != x || yc != y))
+			{
+				//update adjacent node and insert into queue
+				this->ptr[xc][yc].value = u.value + 1;
+				q.push(this->ptr[xc][yc]);
+			}
+		}
+	}
 }

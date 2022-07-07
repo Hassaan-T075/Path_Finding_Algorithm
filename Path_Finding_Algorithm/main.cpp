@@ -1,5 +1,6 @@
 #include<iostream>
 #include"Grid.h"
+#define SIZE 10
 using namespace std;
 
 int main() {
@@ -8,29 +9,32 @@ int main() {
 
 	//G.Display_Grid();
 
-	//Obstacles
 	G.Add_Obstacle(9, 7);
 	G.Add_Obstacle(8, 7);
 	G.Add_Obstacle(6, 7);
+	G.Add_Obstacle(7, 7);
 	G.Add_Obstacle(6, 8);
+	//G.Add_Obstacle(6, 9);
+
+
+	G.Add_Obstacle(6, 3);
+	G.Add_Obstacle(6, 4);
+	G.Add_Obstacle(6, 5);
 
 	G.Display_Grid();
 
 
-	for (size_t i = 0; i < 10; i++)
+	for (size_t i = 0; i < SIZE; i++)
 	{
-		for (size_t j = 0; j < 10; j++)
+		for (size_t j = 0; j < SIZE; j++)
 		{
 		G.adjacent(i, j);
-			cout << "\n(" << i << " , " << j << ")\n";
-
-
-			for (int k = 0; k < G.ptr[i][j].adj.size(); k++) {
-				cout << G.ptr[i][j].adj[k].x << " " << G.ptr[i][j].adj[k].y << "\n";
-			}
 		}
-		cout << "\n\n";
 	}
+
+	G.BFS(4, 4);
+
+	G.Display_Grid();
 
 	return 0;
 }

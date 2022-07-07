@@ -19,6 +19,7 @@ class Node
 public:
 	//predecessor of discovered node
 	Cord pred;
+	//adjacency list for current node
 	vector<Cord> adj;
 	int value;
 
