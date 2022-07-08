@@ -7,34 +7,21 @@ int main() {
 
 	Grid G;
 
-	//G.Display_Grid();
-
 	//Obstacles
-	G.Add_Obstacle(9, 7);
-	G.Add_Obstacle(8, 7);
-	G.Add_Obstacle(6, 7);
-	G.Add_Obstacle(6, 8);
-
-	G.Add_Obstacle(9, 7);
-	G.Add_Obstacle(8, 7);
-	G.Add_Obstacle(6, 7);
+	G.Add_Obstacle(7, 9);
+	G.Add_Obstacle(7, 8);
 	G.Add_Obstacle(7, 7);
-	G.Add_Obstacle(6, 8);
-
-
-	G.Add_Obstacle(6, 3);
-	G.Add_Obstacle(6, 4);
-	G.Add_Obstacle(6, 5);
-	//G.Add_Obstacle(6, 9);
+	G.Add_Obstacle(8, 7);
 
 	G.Display_Grid();
 
 
+	//initialize adjaceny lists for all nodes
 	for (size_t i = 0; i < SIZE; i++)
 	{
 		for (size_t j = 0; j < SIZE; j++)
 		{
-		G.adjacent(i, j);
+			G.adjacent(i, j);
 		}
 	}
 

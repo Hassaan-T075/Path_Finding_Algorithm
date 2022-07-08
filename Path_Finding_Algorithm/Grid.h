@@ -18,6 +18,8 @@ public:
 	//finds adjacent nodes of a given node
 	void adjacent(int x, int y);
 	void BFS(int x, int y);
-	//recursively prints the predecessor nodes of a particular node
+	//wrapper function
 	void lineage(int x, int y);
+	//recursively prints the predecessor nodes of a particular node
+	void print_lineage(int x, int y, int& steps);
 };

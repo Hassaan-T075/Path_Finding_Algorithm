@@ -23,10 +23,10 @@ Grid::Grid()
 
 void Grid::Display_Grid()
 {
-	cout << "\t(";
+	cout << "\t ";
 	for (size_t i = 0; i < SIZE; i++)
 	{
-		cout << i << ")\t(";
+		cout << i << "\t ";
 	}
 	cout << "\n-----------------------------------------------------------------------------------------\n";
 	for (size_t i = 0; i < SIZE; i++)
@@ -96,29 +96,31 @@ void Grid::adjacent(int x, int y)
 
 void Grid::BFS(int x, int y)
 {
-	queue<Node> q;
-	q.push(this->ptr[x][y]);
+	queue<Node*> q;
+
+	//push source vertex/node
+	q.push(&this->ptr[x][y]);
 
 	int xc, yc;
-	Node u, v;
+	Node* u, * v;
 
 	while (!q.empty())
 	{
 		u = q.front();
 		q.pop();
 
-		for (int k = 0; k < u.adj.size(); k++) {
-			
-			xc = u.adj[k].x;
-			yc = u.adj[k].y;
-			
+		for (int k = 0; k < u->adj.size(); k++) {
+
+			xc = u->adj[k].x;
+			yc = u->adj[k].y;
+
 			if (this->ptr[xc][yc].value == NULL && (xc != x || yc != y))
 			{
 				//update adjacent node and insert into queue
-				v = this->ptr[xc][yc];
-				this->ptr[xc][yc].pred = Cord(u.x, u.y);
-				this->ptr[xc][yc].value = u.value + 1;
-				q.push(this->ptr[xc][yc]);
+				v = &this->ptr[xc][yc];
+				v->pred = Cord(u->x, u->y);
+				v->value = u->value + 1;
+				q.push(v);
 			}
 		}
 	}
@@ -126,12 +128,23 @@ void Grid::BFS(int x, int y)
 
 void Grid::lineage(int x, int y)
 {
+	cout << "Path to reach delivery point (" << x << " , " << y << ") is as follows\n\n[";
+	int steps = 0;
+	print_lineage(x, y, steps);
+	cout << "]\n\nTotal number of steps were " << steps << "\n";
+}
+
+void Grid::print_lineage(int x, int y, int& steps)
+{
 	if (this->ptr[x][y].pred.x == -1 && this->ptr[x][y].pred.y == -1)
+	{
 		return;
+	}
 	else
 	{
 		Node u = this->ptr[x][y];
-		cout << "(" << u.pred.x << " , " << u.pred.y << ")\n";
-		lineage(u.pred.x, u.pred.y);
+		++steps;
+		print_lineage(u.pred.x, u.pred.y, steps);
+		cout << "(" << u.x << " , " << u.y << ") , ";
 	}
 }
