@@ -128,7 +128,17 @@ void Grid::BFS(int x, int y)
 
 void Grid::lineage(int x, int y)
 {
-	cout << "Path to reach delivery point (" << x << " , " << y << ") is as follows\n\n[";
+
+	cout << "Path to reach delivery point (" << x << " , " << y << ") is as follows\n\n";
+
+	//if the delivery point is surrounded by obstacles
+	if (this->ptr[x][y].value == 0)
+	{
+		cout << "Inaccessible!!\n";
+		return;
+	}
+
+	cout << "[ ";
 	int steps = 0;
 	print_lineage(x, y, steps);
 	cout << "]\n\nTotal number of steps were " << steps << "\n";
