@@ -8,12 +8,12 @@ int main() {
 	Grid G;
 
 	//Obstacles
-	G.Add_Obstacle(7, 9);
-	G.Add_Obstacle(7, 8);
-	G.Add_Obstacle(7, 7);
-	G.Add_Obstacle(8, 7);
+	//G.Add_Obstacle(7, 9);
+	//G.Add_Obstacle(7, 8);
+	//G.Add_Obstacle(7, 7);
+	//G.Add_Obstacle(8, 7);
 
-	G.Display_Grid();
+	//G.Display_Grid();
 
 
 	//initialize adjaceny lists for all nodes
@@ -25,11 +25,16 @@ int main() {
 		}
 	}
 
-	G.BFS(0, 0);
+
+	//G.BFS(0, 0);
 
 	G.Display_Grid();
 
-	G.lineage(9, 9);
+	//G.lineage(9, 9);
+
+	G.Randomizer();
+
+	G.Display_Grid();
 
 	return 0;
 }

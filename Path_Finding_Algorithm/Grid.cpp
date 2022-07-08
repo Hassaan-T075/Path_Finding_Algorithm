@@ -148,3 +148,31 @@ void Grid::print_lineage(int x, int y, int& steps)
 		cout << "(" << u.x << " , " << u.y << ") , ";
 	}
 }
+
+void Grid::Randomizer()
+{
+	srand(time(NULL));
+	int x;
+	int y;
+
+	cout << "Added obstacles at locations\n[ ";
+
+	for (int i = 0; i < 20; i++)
+	{
+		//use rand function to generate random values
+		x = (rand() % SIZE);
+		y = (rand() % SIZE);
+
+		//constraints for adding new obstacles
+		if (this->ptr[x][y].value == -1 || (x == 0 && y == 0) || (x == SIZE - 1 && y == SIZE - 1))
+		{
+			i--;
+		}
+		else
+		{
+			cout << "(" << x << " , " << y << ") , ";
+			this->ptr[x][y].value = -1;
+		}
+	}
+	cout << "]\n\n";
+}

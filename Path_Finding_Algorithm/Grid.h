@@ -1,6 +1,8 @@
 #pragma once
 #include<iostream>
 #include<queue>
+#include<stdlib.h>
+#include<ctime>
 #include"Node.h"
 using namespace std;
 
@@ -22,4 +24,6 @@ public:
 	void lineage(int x, int y);
 	//recursively prints the predecessor nodes of a particular node
 	void print_lineage(int x, int y, int& steps);
+	//randomly adds 20 obstacles
+	void Randomizer();
 };
